@@ -1,0 +1,49 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  DEPLOY_PATH: "/var/www/nhz-api-chat/9hz-ai"
+  PM2_ID: "10"
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - echo "Using Node version:"
+  - node -v
+  - npm -v
+
+build_app:
+  stage: build
+  tags:
+    - BeNarrative-runner.nest
+  script:
+    - echo "Installing dependencies..."
+    - npm install -f 
+    - echo "Building Vite app..."
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 hour
+  only:
+    - theme/changes
+
+deploy_app:
+  stage: deploy
+  tags:
+    - BeNarrative-runner.nest
+  script:
+    - echo "Creating deploy directory if not exists..."
+    - sudo mkdir -p $DEPLOY_PATH
+    - echo "Deploying code..."
+    - sudo rsync -av ./ $DEPLOY_PATH/
+    - echo "Restarting PM2 process..."
+    - sudo pm2 restart $PM2_ID
+    - echo "Deployment completed successfully!"
+  dependencies:
+    - build_app
+  only:
+    - theme/changes
