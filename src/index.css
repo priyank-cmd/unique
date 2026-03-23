@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: dark; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background-color: #06060A;
+    color: #ffffff;
+    /* font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; */
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  * { box-sizing: border-box; }
+  a { text-decoration: inherit; }
+}
+
+/* ── Hide scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; }
+
+/* ── Typing dots ───────────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 80%, 100% { transform: scale(0.5); opacity: 0.3; }
+  40%            { transform: scale(1);   opacity: 1;   }
+}
+.typing-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  animation: pulse-dot 1.4s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.16s; }
+.typing-dot:nth-child(3) { animation-delay: 0.32s; }
+
+/* ── Background dot animations ─────────────────────────────────── */
+.dot-animation {
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+}
+.dot-1 {
+  background-color: #FF5E79;
+  width: 20px; height: 20px;
+  animation: dot-animation-1 8s infinite linear;
+  bottom: 350px; left: 60px;
+}
+.dot-2 {
+  background-color: #006CFF;
+  width: 40px; height: 40px;
+  animation: dot-animation-2 10s infinite linear;
+  bottom: 100px; left: 100px;
+}
+.dot-3 {
+  background-color: #FF8000;
+  width: 32px; height: 32px;
+  animation: dot-animation-3 12s infinite;
+  bottom: 180px; right: 260px;
+}
+.dot-4 {
+  background-color: #006CFF;
+  width: 55px; height: 55px;
+  animation: dot-animation-4 11s infinite;
+  bottom: 350px; right: 30px;
+}
+@keyframes dot-animation-1 {
+  33%  { bottom: 430px; left: 230px; }
+  66%  { bottom: 310px; left: 180px; }
+  100% { bottom: 350px; left: 60px;  }
+}
+@keyframes dot-animation-2 {
+  33%  { bottom: 350px; left: 100px; }
+  66%  { bottom: 180px; left: 260px; }
+  100% { bottom: 100px; left: 100px; }
+}
+@keyframes dot-animation-3 {
+  33%  { bottom: 70px;  right: 60px;  }
+  66%  { bottom: 360px; right: 60px;  }
+  100% { bottom: 180px; right: 260px; }
+}
+@keyframes dot-animation-4 {
+  33%  { bottom: 200px; right: 70px;  }
+  66%  { bottom: 200px; right: 350px; }
+  100% { bottom: 350px; right: 70px;  }
+}
