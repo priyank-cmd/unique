@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-03-23T11:07:36.045Z",
+  "companyFeatures": [
+    "chat"
+  ],
+  "companyWebsiteUrl": "https://theninehertz.com/",
+  "companyName": "Unique",
+  "companyLogoUrl": "/brand-logo.svg",
+  "companyOtherUrls": [
+    "https://www.myvi.in/",
+    "https://www.apple.com/in/"
+  ],
+  "mode": "full-app-mirror",
+  "description": "Full workspace snapshot: real server.js, orchestration/, React src/, RAG. Same behavior as source after npm install --legacy-peer-deps."
+}
